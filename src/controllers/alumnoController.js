@@ -6,7 +6,7 @@ controller.list = (req, res) => {
             if(err){
                 res.json(err);
             }
-            res.render('alumnos', {
+            res.render('tabla', {
                 data: alumnos
             });
         });
@@ -17,10 +17,9 @@ controller.add=(req, res) =>{
         if(err){
             res.json(err);
         }
-            res.render('alumno_add');
+            res.render('formulario');
     });
 }
-
 controller.save= (req, res) =>{
     const data = req.body;
 
@@ -51,7 +50,7 @@ controller.edit = (req, res) => {
             if(err){
                 res.json(err);
             }
-            res.render('alumno_edit', {
+            res.render('editar', {
                 data: alumnos[0]
             })
         });
@@ -89,76 +88,42 @@ controller.delete=(req, res) =>{
         });
     });
 };
-controller.consulta1 = (req, res) => {
+
+controller.consulta = (req, res) => {
+    const data = req.body;
+    const {consulta} = req.params;
+    var query = '';
+    var render = '';
+    if(consulta==1){
+        query = 'SELECT * FROM alumnos WHERE cod_postal = 7601';
+        render = 'consultas';
+    }
+    if(consulta==2){
+        query = 'SELECT * FROM alumnos WHERE YEAR(fecha_nac_alumno) = 2002';
+        render = 'consultasB';
+    }
+    if(consulta==3){
+        query = "SELECT * FROM alumnos WHERE cod_postal = 7601 && grupo_sang_alumno = 'RH-'";
+        render = 'consultasC';
+    }
+    if(consulta==4){
+        query = 'SELECT * FROM alumnos ORDER BY dni_alumno ASC';
+        render = 'consultasD';
+    }
+    if(consulta==5){
+        query = "SELECT * FROM alumnos WHERE dom_alumno LIKE 'Av. J.B. Justo.%'";
+        render = 'consultasE';
+    }
     req.getConnection((err,conn)=>{
         
-        conn.query("SELECT * FROM alumnos WHERE cod_postal = 7601", (err, alumnos) =>{
+        conn.query(query, (err, alumnos) =>{
             if(err){
                 res.json(err);
             }
-            res.render('consultas', {
+            res.render(render, {
                 data: alumnos
             });
         });
     });
-
 };
-
-controller.consulta2 = (req, res) => {
-    req.getConnection((err,conn)=>{
-        
-        conn.query("SELECT * FROM alumnos WHERE YEAR(fecha_nac_alumno) = '2002'", (err, alumnos) =>{
-            if(err){
-                res.json(err);
-            }
-            res.render('consultasB', {
-                data: alumnos
-            });
-        });
-    });
-
-};
-controller.consulta3 = (req, res) => {
-    req.getConnection((err,conn)=>{
-        
-        conn.query("SELECT * FROM alumnos WHERE cod_postal = 7601 && grupo_sang_alumno = 'RH-' ", (err, alumnos) =>{
-            if(err){
-                res.json(err);
-            }
-            res.render('consultasC', {
-                data: alumnos
-            });
-        });
-    });
-
-};
-controller.consulta4 = (req, res) => {
-    req.getConnection((err,conn)=>{
-        
-        conn.query("SELECT * FROM alumnos ORDER BY dni_alumno ASC", (err, alumnos) =>{
-            if(err){
-                res.json(err);
-            }
-            res.render('consultasD', {
-                data: alumnos
-            });
-        });
-    });
-
-};
-controller.consulta5 = (req, res) => {
-    req.getConnection((err,conn)=>{
-        
-        conn.query("SELECT * FROM alumnos WHERE dom_alumno LIKE 'Av. J.B. Justo.%'", (err, alumnos) =>{
-            if(err){
-                res.json(err);
-            }
-            res.render('consultasE', {
-                data: alumnos
-            });
-        });
-    });
-
-};
-
 module.exports = controller;

@@ -19,6 +19,7 @@ app.use(myConnection(mysql,{
     database: '3ivIxZp5Hx'
 }, 'single'));
 app.use(express.urlencoded({extended:false}));
+
 app.use('/', alumnoRoutes);
 app.listen(app.get('port'), ()=>{
     console.log('Server on port 3000');
