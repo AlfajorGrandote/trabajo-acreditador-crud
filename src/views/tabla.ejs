@@ -9,9 +9,9 @@
 		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     </head>
-    <body> 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-warning" style="box-shadow: 0px 2px 3px 1px #866737">
-       <a class="navbar-brand" href="/">Trabajo Practico Final (CRUD)</a>
+    <body style="background-color: #c9c2c2"> 
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary" style="box-shadow: 0px 2px 3px 1px #8b8b8b">
+       <a class="navbar-brand" href="/">CRUD</a>
        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
        </button>
@@ -37,7 +37,7 @@
     </nav>
 		<h1 class="col-xl-7">&nbsp;</h1>
 		<h1 class="col-xl-7">&nbsp;</h1>
-        <div class="card offset-xl-2"  style="background-color: rgba(126, 126, 126, 0.801);box-shadow: 0px 2px 3px 1px #757575; width: 80rem;">
+        <div class="card offset-xl-2"  style="background-color: #ABDAFC;box-shadow: 0px 2px 3px 1px #94d6fc; width: 80rem;">
 			<div class="card-body">
           		<h6 class="display-8 col-xl-7">&nbsp;</h6>
 		 		<h3 class="col-xl-12">Alumnos Registrados:</h3>
@@ -45,7 +45,7 @@
   					<div class="row">
     					<div class="">
               					<div class="">
-                  					<table class="table table-striped table-dark" style="box-shadow: 0px 2px 3px 1px #15151a">
+                  					<table class="table table-light" style="box-shadow: 0px 2px 3px 1px #557ca8">
                    			 		  <thead >
                                 	<th style="vertical-align: middle; text-align: center;">Opciones</th>
                       					<th style="vertical-align: middle; text-align: center;">ID</th>
@@ -64,14 +64,12 @@
                      		 		<% if (data) {%>
                         				<% for (var i=0; i<data.length; i++){%>
                           					<tr>
-                                      <td>
-										<div class="btn-group-vertical">
-											<a href="/actualizar/<%= data[i].leg_alumno%>" class="btn btn-secondary ">Editar</a>
-                                        	<a href="/borrar/<%= data[i].leg_alumno%>" class="btn btn-warning">Borrar</a>
-										  </div>
-										  
-                                        
-                                      </td>
+                                      			<td>
+													<div class="btn-group-vertical">
+														<a href="/actualizar/<%= data[i].leg_alumno%>" class="btn btn-success ">Editar</a>
+                                        				<a href="/borrar/<%= data[i].leg_alumno%>" class="btn btn-danger">Borrar</a>
+										  			</div>
+                                      			</td>
                             					<td><%=(i+1)%></td>
                             					<td><%=data[i].leg_alumno%></td>
                             					<td><%=data[i].apyn_alumno%></td>
@@ -96,7 +94,7 @@
   		</div>
       <h6 class=" col-xl-7">&nbsp;</h6>
 			<div class="row offset-xl-1">
-           		 <a href="/ingresar" class="btn btn-warning" style="box-shadow: 0px 2px 3px 1px #866737">Ingresar nuevo alumno</a>   
+           		 <a href="/ingresar" class="btn btn-info" style="box-shadow: 0px 2px 3px 1px #3c8aa1">Ingresar nuevo alumno</a>   
         	</div>
       <h6 class="display-8 col-xl-7">&nbsp;</h6>
 	</div>       
