@@ -12,11 +12,11 @@ app.set('views', path.join(__dirname, 'views'));
 
 app.use(morgan('dev'));
 app.use(myConnection(mysql,{
-    host:'localhost',
-    user:'root',
-    password:'',
+    host:'remotemysql.com',
+    user:'3ivIxZp5Hx',
+    password:'cWosAit6wY',
     port:3306,
-    database: 'test'
+    database: '3ivIxZp5Hx'
 }, 'single'));
 app.use(express.urlencoded({extended:false}));
 
